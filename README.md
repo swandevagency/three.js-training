@@ -1,5 +1,4 @@
-# three.js-training
-Designed and developed by arian novin
+# three-js-training
 
 ## Build Setup
 

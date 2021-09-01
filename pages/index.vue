@@ -1,5 +1,6 @@
 <template>
   <div class="nuxt-app-wrapper">
+    <canvas class="particles-canvas"></canvas>
     <div
       class="landing-image-wrapper"
       @mousemove="rotateLandingImage"
@@ -23,12 +24,12 @@
         </div>
       </div>
     </div>
-    <div class="browse-objects-wrapper">
+    <div class="browse-objects-wrapper" ref="browseObjectContainer">
       <h2>Browse objects</h2>
       <ObjectItem
-        v-for="objectItem in objectItems"
-        :key="objectItem.Id"
-        :objectItem="objectItem"
+        v-for="objectData in objectItems"
+        :key="objectData.Id"
+        :objectData="objectData"
       />
     </div>
     <WhatIsThreeJs />
@@ -36,7 +37,7 @@
 </template>
 
 <script>
-import * as THREE from "three";
+// import * as gsap from "gsap";
 import ObjectItem from "../components/ObjectItem.vue";
 import WhatIsThreeJs from "../components/WhatIsThreeJs.vue";
 export default {
@@ -143,7 +144,8 @@ export default {
 }
 
 * {
-  transition: all 0.3s cubic-bezier(0, 0, 0.58, 1);
+  transition: transform 0.3s cubic-bezier(0, 0, 0.58, 1),
+    box-shadow 0.3s cubic-bezier(0, 0, 0.58, 1);
 }
 
 body {
@@ -153,9 +155,16 @@ body {
 }
 
 /* .nuxt-app-wrapper {
-  margin-top: 50px;
+  overflow-x: hidden;
+  overflow-y: initial;
 } */
-
+.particles-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 .landing-image-wrapper {
   display: flex;
   justify-content: space-between;
@@ -231,6 +240,10 @@ body {
 .browse-objects-wrapper > h2 {
   grid-column: 1 / 4;
   color: var(--text-color);
+}
+#gui {
+  position: fixed;
+  z-index: 100;
 }
 
 /* #region Animations */

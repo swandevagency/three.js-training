@@ -132,7 +132,7 @@ footer {
 }
 .left-illustrations-wrapper > img[id="4"] {
   filter: var(--illustration-drop-shadow);
-  transform: translate(-35px, -65px);
+  transform: translate(-0px, -65px);
 }
 .left-illustrations-wrapper > img[id="5"] {
   filter: var(--illustration-drop-shadow);
@@ -209,8 +209,6 @@ footer {
 }
 .polygon-pattern-images-wrapper > img {
   mix-blend-mode: soft-light;
-  /* width: 400px; */
-  /* transform: translateX(-40px); */
   object-position: left;
   object-fit: contain;
 }
